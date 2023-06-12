@@ -12,24 +12,28 @@ function createWindow() {
     }
   })
 
+  win.removeMenu();
+
   if (app.isPackaged) {
     // 'build/index.html'
     win.loadURL(`file://${__dirname}/../index.html`);
   } else {
-    win.loadURL('http://localhost:3000/index.html');
+    win.loadURL("http://localhost:3000/index.html");
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Hot Reloading on 'node_modules/.bin/electronPath'
-    require('electron-reload')(__dirname, {
-      electron: path.join(__dirname,
-        '..',
-        '..',
-        'node_modules',
-        '.bin',
-        'electron' + (process.platform === "win32" ? ".cmd" : "")),
+    require("electron-reload")(__dirname, {
+      electron: path.join(
+        __dirname,
+        "..",
+        "..",
+        "node_modules",
+        ".bin",
+        "electron" + (process.platform === "win32" ? ".cmd" : "")
+      ),
       forceHardReset: true,
-      hardResetMethod: 'exit'
+      hardResetMethod: "exit",
     });
   }
 }
